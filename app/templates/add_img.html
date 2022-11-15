@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Adicionar Imagem{% endblock title %}
+
+<!-- Footer Denied in this page -->
+{% block footer %}{% endblock footer %}
+
+<!-- NAVBAR -->
+<!-- Left -->
+{% block nav-content %}
+    <i class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp; Adicionar imagens
+{% endblock nav-content %}
+
+<!-- Right -->
+{% block nav-btn %}
+    <a href="{% url 'backend' %}" id="btn-nav" class="btn btn-secondary" title="Voltar">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+{% endblock nav-btn %}
+
+
+<!-- PAGE CONTENT -->
+{% block content %}
+<style>
+    /* Scroll */
+    body {overflow-y: visible;}
+</style>
+<div class="container w-card-images">
+
+    {% block render %}{% endblock render %} <!-- Bloco para ser Page Edit -->
+
+    <form method="POST" novalidate enctype="multipart/form-data">{% csrf_token %}
+        <div class="card p-3 border-dark mt-3 mb-3">
+            <!-- Bloco de ID -->
+            {% block Id %}{% endblock Id %}
+            <!-- Titulo -->
+            {% block img-titulo %}
+            {{ form.titulo|as_crispy_field }}
+            {% endblock img-titulo %}
+            <!-- Imagem Padrão -->
+            {% block img-default %}{% endblock img-default %}
+            <!-- Slide de Imagens -->
+            <div class="mb-3 btn btn-secondary p-1 txt-sm0 c-default">SLIDE DE IMAGENS</div>
+            <div class="row gx-1">
+                <div class="col-6">{{ form.img_01|as_crispy_field }}</div>
+                <div class="col-6">{{ form.img_02|as_crispy_field }}</div>
+            </div>
+            <div class="row gx-1 img-mt">
+                <div class="col-6">{{ form.img_03|as_crispy_field }}</div>
+                <div class="col-6">{{ form.img_04|as_crispy_field }}</div>
+            </div>
+            <div class="row gx-1 img-mt">
+                <div class="col-6">{{ form.img_05|as_crispy_field }}</div>
+                <div class="col-6">{{ form.img_06|as_crispy_field }}</div>
+            </div>
+            <hr class="mt-1">
+            {% block save %}
+            <button type="submit" class="btn btn-success mt-1 mb-1 txt-sm w-btn-img">
+                <i class="fas fa-hdd"></i>&nbsp;&nbsp; Salvar mudanças
+            </button>
+            {% endblock save %}
+        </div>
+    </form>
+
+</div> <!-- End Conteiner -->
+
+<br><br><br><br>
+
+{% endblock content %}

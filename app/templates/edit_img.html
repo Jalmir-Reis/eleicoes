@@ -1,0 +1,102 @@
+{% extends 'add_img.html' %}
+
+{% block title %}Edição Slide{% endblock title %}
+<!-- NAVBAR -->
+{% block nav-content %}
+    <i class="fas fa-images"></i>&nbsp;&nbsp; <span class="txt-sm2">Adicionar imagens</span>
+{% endblock %}
+
+<!-- Bloco de ID -->
+{% block Id %}
+    {{ form.id.as_hidden }}
+{% endblock Id %}
+
+<!-- Titulo -->
+{% block img-titulo %}
+    {{ form.titulo.as_hidden }}
+{% endblock img-titulo %}
+
+<!-- Imagem Padrão -->
+{% block img-default %}
+<a class="mb-2 btn btn-dark p-1 txt-sm0 c-pointer">IMAGEM PRINCIPAL</a>
+<div class="input-group mb-3">
+    {% for data in d %}
+    <a href="{% url 'admin:app_default_changelist' %}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Editar imagem"><i class="fas fa-link"></i></a>
+    <a href="/media/{{ data.img_default }}" target="_blank" class="form-control btn btn-light border-secondary btn-sm" for="files" title="Ver imagem">
+        <i class="fas fa-thumbtack"></i>&nbsp;&nbsp; {{ data.img_default }}
+    </a>
+    {% endfor %}
+</div>
+<hr class="mt-1">
+{% endblock img-default %}
+
+{% block save %}
+    <button type="submit" id="save-image" class="btn btn-success mt-1 mb-1 txt-sm w-btn-img">
+        <i class="fas fa-hdd"></i>&nbsp;&nbsp; Salvar mudanças
+    </button>
+{% endblock save %}
+
+<!--======= Bloco de ID ========-->
+{% block render %}
+<div class="container card p-xl-4 p-sm-4 p-3 mt-4 border-dark">
+    <div class="card p-xl-2 p-sm-2 p-1 bg-dark text-center text-light mb-3 txt-sm0">IMAGENS CADASTRADAS</div>
+    <div class="row" style="font-size: 13px;">
+        <!-- Image 01 -->
+        <div class="col-xl-2 col-sm-4 col-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 01</span>
+                <img src="{{ s.img_01.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_01 }}</span>
+            </div>
+        </div>
+
+        <!-- Image 02 -->
+        <div class="col-xl-2 col-sm-4 col-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 02</span>
+                <img src="{{ s.img_02.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_02 }}</span>
+            </div>
+        </div>
+
+        <!-- Image 03 -->
+        <div class="col-xl-2 col-sm-4 col-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 03</span>
+                <img src="{{ s.img_03.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_03 }}</span>
+            </div>
+        </div>
+
+        <!-- Image 04 -->
+        <div class="col-xl-2 col-sm-4 col-4 mt-xl-0 mt-sm-4 mt-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 04</span>
+                <img src="{{ s.img_04.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_04 }}</span>
+            </div>
+        </div>
+
+        <!-- Image 05 -->
+        <div class="col-xl-2 col-sm-4 col-4 mt-xl-0 mt-sm-4 mt-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 05</span>
+                <img src="{{ s.img_05.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_05 }}</span>
+            </div>
+        </div>
+
+        <!-- Image 06 -->
+        <div class="col-xl-2 col-sm-4 col-4 mt-xl-0 mt-sm-4 mt-4">
+            <div class="text-center">
+                <span class="card mb-2 p-xl-1 p-sm- p-0 bg-success text-light txt-sm0">Imagem 06</span>
+                <img src="{{ s.img_06.url }}" class="w-100 img-fluid img-thumbmail" width="150" height="150">
+                <span class="card mt-2 txt-sm0">{{ s.img_06 }}</span>
+            </div>
+        </div>
+
+    </div>
+
+</div> <!-- END container -->
+
+{% endblock render %}

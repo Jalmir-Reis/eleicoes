@@ -1,0 +1,153 @@
+
+{% extends 'base.html' %}
+
+<!-- Title -->
+{% block title %}Backend{% endblock title %}
+
+<!-- NAVBAR -->
+<!-- Left -->
+{% block nav-content %}
+    <i class="fas fa-globe-americas"></i>&nbsp;&nbsp;
+    <span class="txt-sm2">Bem vindo:
+        <span style="color: #8abaae;">{{ user.get_username }}</span>
+    </span>
+{% endblock nav-content %}
+
+<!-- Right -->
+{% block nav-btn %}
+    <a id="btn-nav" class="btn btn-danger" title="Log out" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        <i class="fas fa-power-off"></i>
+    </a>
+{% endblock nav-btn %}
+
+<!-- Page Content -->
+
+{% block content %}
+
+<div class="container mt-xl-5 mt-sm-4 mt-4">
+	<button class="btn btn-outline-dark mb-4 w-100 btn-lg txt-sm3" style="cursor: default;">
+		<i class="fas fa-cog"></i>&nbsp;&nbsp; Painel de Controle
+	</button>
+<!-- ===== CARDS ===== -->
+    <div class="row txt-sm">
+    <!-- Timer -->
+        {% for data in timer %}
+        <div class="col-xl-4 col-sm-4 col-6 mb-4 c-pointer" data-bs-toggle="modal" data-bs-target="#timerModal{{ data.pk }}">
+            <div class="card p-xl-4 p-sm-2 p-0 bg-primary text-light">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div>
+                            <p><i class="fas fa-history fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">COUNTDOWN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'modals/timerModal.html' %}
+        {% endfor %}
+
+        <!-- Typed effect -->
+        {% for data in typed %}
+        <div class="col-xl-4 col-sm-4 col-6 mb-4 c-pointer" data-bs-toggle="modal" data-bs-target="#typedModal{{ data.pk }}">
+            <div class="card p-xl-4 p-sm-2 p-0 bg-secondary text-light">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div>
+                            <p><i class="fas fa-keyboard fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">EFEITO DIGITAÇÃO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'modals/typedModal.html' %}
+        {% endfor %}
+
+       <!-- Music -->
+         {% for data in music %}
+        <div class="col-xl-4 col-sm-4 col-6 mb-4 c-pointer" data-bs-toggle="modal" data-bs-target="#musicModal{{ data.pk }}">
+            <div class="card p-xl-4 p-sm-2 p-0 bg-secondary text-light">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div>
+                            <p><i class="fas fa-play fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">MUSICA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'modals/musicModal.html' %}
+        {% endfor %}
+
+        <!-- Imagens -->
+        {% for data in slide %}
+        <a href="{% url 'update' data.id %}" class="col-xl-4 col-sm-4 col-6 mb-4" style="text-decoration: none;">
+            <span class="card p-xl-4 p-sm-2 p-0 bg-secondary text-light">
+                <span class="card-body">
+                    <span class="text-center">
+                        <span>
+                            <p><i class="fas fa-images fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">IMAGENS</p>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </a>
+        {% empty %}
+        <a href="{% url 'create' %}" class="col-xl-4 col-sm-4 col-6 mb-4" style="text-decoration: none;">
+            <span class="card p-xl-4 p-sm-2 p-0 bg-light">
+                <span class="card-body">
+                    <span class="text-center">
+                        <span>
+                            <p><i class="fas fa-plus fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">ADICIONAR SLIDE</p>
+                        </span>
+                    </span>
+                </span>
+            </span>
+        </a>
+
+        {% endfor %}
+
+        <!-- Homepage -->
+        {% for data in home %}
+        <div class="col-xl-4 col-sm-4 col-6 mb-4 c-pointer" data-bs-toggle="modal" data-bs-target="#homeModal{{ data.pk }}">
+            <div class="card p-xl-4 p-sm-2 p-0 bg-secondary text-light">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div>
+                            <p><i class="fas fa-globe-americas fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">HOMEPAGE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'modals/homeModal.html' %}
+        {% endfor %}
+
+        <!-- Inscrições -->
+        <div class="col-xl-4 col-sm-4 col-6 mb-4 c-pointer" data-bs-toggle="modal" data-bs-target="#newsModal">
+            <div class="card p-xl-4 p-sm-2 p-0 bg-warning">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div>
+                            <p><i class="fas fa-mail-bulk fa-4x"></i></p>
+                            <p class="mt-xl-5 mt-sm-5 mt-4 mb-0">INSCRITOS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- END ROW -->
+</div> <!-- END Container -->
+
+{% endblock content %}
+
+<!-- Footer (Include Partials) -->
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer%}

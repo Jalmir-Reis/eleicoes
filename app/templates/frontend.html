@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Frontend{% endblock title %}
+<!-- Page Content -->
+
+{% block content %}
+<!--CARDS (Countdown timer)-->
+<div class="container text-center w-size timer_over">
+    <div class="row mt-4 gx-2">
+        <!--DIAS-->
+        <div class="col-xl-3 col-sm-3 col-3 p-1">
+            <div class="card border-0">
+                <button class="btn btn-success btn-lg">
+                    <span class="f-size1" id="d"></span><br><span class="f-size2">Dias</span>
+                </button>
+            </div>
+        </div>
+        <!--HORAS-->
+        <div class="col-xl-3 col-sm-3 col-3 p-1">
+            <div class="card border-0">
+                <button class="btn btn-warning btn-lg">
+                    <span class="f-size1" id="h"></span><br><span class="f-size2">horas</span>
+                </button>
+            </div>
+        </div>
+        <!--MINUTOS-->
+        <div class="col-xl-3 col-sm-3 col-3 p-1">
+            <div class="card border-0">
+                <button class="btn btn-primary btn-lg">
+                    <span class="f-size1" id="m"></span><br><span class="f-size2">minutos</span>
+                </button>
+            </div>
+        </div>
+        <!--SEGUNDOS-->
+        <div class="col-xl-3 col-sm-3 col-3 p-1">
+            <div class="card border-0">
+                <button class="btn btn-danger btn-lg">
+                    <span class="f-size1" id="s"></span><br><span class="f-size2">segundos</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Typed control (Texto fixo) -->
+    {% for data in typed %}
+    <div class="card text-center p-2 mt-5 w-100" style="background-color: rgba(0,0,0.5);">
+        <h1 class="typed-text text-light" id="f-typed">{{ data.fixo }}
+            <span id="element" style="color: yellowgreen;">
+            </span>
+        </h1>
+    </div>
+    {% endfor%}
+
+    <!-- Musica de fundo -->
+    {% for data in music %}
+    <div id="play-center" class="timer_over">
+        <i class="bx bx-play-circle pulse" id="btn-play"></i>
+        <audio src="{{ data.music.url }}" id="music"></audio>
+    </div>
+    {% endfor%}
+
+</div> <!--end div conteiner-->
+
+<!--Image Control-->
+{% for data in slide %}
+<style>
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('{{ data.img_default.url }}');
+        background-position: center 0px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        animation: change 20s infinite ease-in-out;
+        transition: 5s;
+    }
+    @keyframes change {
+        0%{background-image: url("{{ data.img_01.url }}");}
+        20%{background-image: url("{{ data.img_02.url }}");}
+        40%{background-image: url("{{ data.img_03.url }}");}
+        60%{background-image: url("{{ data.img_04.url }}");}
+        80%{background-image: url("{{ data.img_05.url }}");}
+        100%{background-image: url("{{ data.img_06.url }}");}
+    }
+</style>
+{% empty %}
+    {% for data in default %}
+        <style>
+            body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('{{ data.img_default.url }}');
+            background-position: center 0px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        </style>
+
+    {% endfor %}
+{% endfor %}
+
+<!--HOME PAGE (Depois do Countdown)-->
+{% for data in home %}
+<div class="container mt-5 card p-xl-5 p-sm-4 p-3 w-home" id="homepage" style="display: none;">
+	<div class="text-center">
+		<div class="t-home">
+			<i class="fas {{ data.icon_title }}"></i><span class="text-success">{{ data.home_title }}</span>
+		</div>
+		<hr>
+		<h6 class="txt-sm">{{ data.horario }}</h6>
+		<hr>
+		<ul class="list-group mt-4">
+			<li class="list-group-item {{ data.card_color01 }} text-light text-center txt-sm">
+				<i class="fas {{ data.card_icon01 }}"></i>&nbsp;&nbsp; {{ data.card_title01 }}
+			</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_a1 }}</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_b1 }}</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_c1 }}</li>
+		</ul>
+		<hr>
+        <ul class="list-group mt-3">
+			<li class="list-group-item {{ data.card_color02 }} text-light text-center txt-sm">
+				<i class="fas {{ data.card_icon02 }}"></i>&nbsp;&nbsp; {{ data.card_title02 }}
+			</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_a2 }}</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_b2 }}</li>
+			<li class="list-group-item txt-sm">{{ data.txt_card_c2 }}</li>
+		</ul>
+	</div>
+
+    <div class="text-end">
+        <button class="btn {{ data.btn_color }} btn-lg mt-5 txt-sm" data-bs-toggle="modal" data-bs-target="#infoModal">
+            <i class="fas {{ data.icon_type }}"></i>
+        </button>
+    </div>
+
+</div><!--DIV container-->
+{% endfor %}
+
+    <div style="position: absolute; bottom: 0px; width:100%;">
+        {% include 'partials/footer.html' %}
+    </div>
+
+{% endblock content %}

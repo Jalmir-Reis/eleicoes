@@ -1,0 +1,207 @@
+/* ------- Start Configuration -------- */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ------- Footer -------- */
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -65px;
+}
+
+#footer,
+.push{
+    height: 65px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.w-footer{width: 70%;}
+
+/* ------- NewsLetter -------- */
+#email{border-radius: 4px 0px 0px 4px;}
+
+/* ------- Nav Bar -------- */
+/* Left-side */
+#navbar {
+    text-align: center;
+    color: #fff;
+    margin-left: 25px;
+}
+/* Right-side */
+#btn-nav {
+    float: right;
+    margin-right: 25px;
+    width: 50px;
+}
+
+
+/* ------ LOGIN ------ */
+#card-login {width: 450px;}
+.login-border {
+	border-top: .4rem solid #198754;
+	border-bottom: .4rem solid #198754;
+	border-radius: 10px;
+}
+
+#btn-enter {
+	border-radius: 15px;
+	font-size: 16px;
+	width: 90px;
+}
+/*-- INPUT FOCUS GREEN -- */
+.form-control:focus {
+	border-color: green;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/* -- Globo Icon -- */
+.globe {
+    color: #d3d3d3;
+    font-size: 100px;
+}
+
+/* ------- Others -------- */
+/*  Add/remove cursor pointer  */
+.c-pointer {cursor: pointer;}
+.c-default {cursor: pointer;}
+
+/* CountDown Frontend */
+.w-size {width: 70%;}
+.f-size1 {font-size: 60px;}
+.fsize2 {font-size: 18px;}
+
+/* Font Size (typed effects) */
+#f-typed {font-size: 25px;}
+.side-label {width: 45px;}
+.tr-size {font-size: 14px;}
+.t-home {font-size: 40px;}
+
+.w-card-images {width: 80%;}
+
+/* ------- Custom SweetAlert -------- */
+
+/* All texts centered */
+.swal-text {
+    text-align: center;
+  }
+  /* Icon settings */
+  .swal-icon--success:before,
+  .swal-icon--success:after,
+  .swal-icon--success__hide-corners {
+    background: none !important;
+  }
+  .swal-icon--success {
+    /* Color of ring */
+    border-color: #198754;
+  }
+  .swal-icon--success__line {
+    /* Animation */
+    background-color: #198754;
+  }
+  /* Button settings */
+  .swal-button {
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: #111;
+    font-size: 12px;
+    border: 1px solid #111;
+  }
+  .swal-button:focus {
+    /* Remove the silver border aroud the native button */
+    box-shadow: none;
+  }
+  .swal-button:not([disabled]):hover {
+    /* Hover effect */
+    background: transparent;
+    color: #111;
+    border: 1px solid #111;
+  }
+
+  /* BG MUSIC */
+  .bx-play-circle, .bx-pause-circle {
+    font-size: 100px;
+    color: #fff;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    margin-top: 40px;
+  }
+  .bx-play-circle {border: 2px solid greenyellow;}
+
+  /* PLAY POSITION*/
+  #play-center {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  /* Pulse Effect - Play Button */
+  .pulse {
+    animation: animate 3s linear infinite;
+  }
+  @keyframes animate {
+    0% {box-shadow: 0 0 0 0 rgba(178, 222, 39, .7), 0 0 0 0 rgba(178, 222, 39, .7);}
+    40% {box-shadow: 0 0 0 30px rgba(255, 109, 74, 0), 0 0 0 0 rgba(178, 222, 39, .7);}
+    80% {box-shadow: 0 0 0 50px rgba(255, 109, 74, 0), 0 0 0 30px rgba(255, 109, 74, 0);}
+    100% {box-shadow: 0 0 0 0 rgba(255, 109, 74, 0), 0 0 0 30px rgba(255, 109, 74, 0);}
+  }
+
+  /* Tablet (1199 px) */
+@media(max-width:1199px) {
+    .w-size{width: 100%;}
+    .f-size1{font-size: 40px;}
+    .f-size2{font-size: 16px;}
+
+    #f-typed{font-size: 20px;}
+    .w-footer{width: 100%;}
+    .bx-play-circle, .bx-pause-circle {font-size: 70px;}
+
+    .t-home{font-size: 30px;}
+    .globe {color: #d3d3d3; font-size: 100px;}
+
+    .w-btn-img {width: 100%; border-radius: 30px; padding: 7px;}
+}
+
+ /* SmartPhone (575 px) */
+@media(max-width:575px) {
+    #nav-bar, #btn-nav {margin-left: 15px;}
+    #btn-nav {margin-right: 15px; width: 40px; font-size: 13px;}
+    #card-login {width: 95%;}
+    #login-globe {font-size: 90px;}
+
+    .txt-sm0 {font-size: 10px;}
+    .txt-sm {font-size: 12px;}
+    .txt-sm2 {font-size: 14px;}
+    .txt-sm3 {font-size: 16px;}
+
+    #footer {font-size: 12px;}
+    .w-footer {width: 100%;}
+    .bx-play-circle, .bx-pause-circle {font-size: 60px;}
+
+    .w-btn-img {width: 100%; border-radius: 30px; padding: 5px;}
+    .w-home {width: 95%;}
+    .t-home {font-size: 20px;}
+    .f-size1 {font-size: 22px;}
+    .f-size2 {font-size: 10px;}
+
+    .globe {color: #d3d3d3; font-size: 80px;}
+
+    #btn-enter {font-size: 14px;}
+    .w-card-images {width: 100%;}
+    .f-typed {font-size: 15px;}
+
+    .img-mt {margin-top: -10px;}
+}

@@ -1,0 +1,45 @@
+{% extends 'modals/baseModal.html' %}
+
+{% block modal-id %} id='timerModal{{ data.pk }}' {% endblock %}
+
+{% block modal-title %}
+<span class="txt-sm3"><i class="fas fa-history"></i>&nbsp;&nbsp; Contagem Regressiva</span>
+{% endblock %}
+
+<!-- Form -->
+{% block form %}
+<style>
+	input {cursor: pointer;}
+	input::-webkit-calendar-picker-indicator { cursor: pointer; }
+	/* Input focus blue */
+	.form-control:focus {
+		border-color: #007bff;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+}
+</style>
+
+<form method="POST" action="/edit_timer" autocomplete="off">
+    {% csrf_token %}
+    <div class="modal-body">
+        <span class="card p-2 bg-primary text-center text-light txt-sm2">
+            Controle de contagem
+        </span>
+        <!-- ID Hidden -->
+        <input type="hidden" name="id" value="{{ data.id }}" readonly>
+        <br>
+        <!-- Input Title -->
+        <div class="input-group">
+            <input type="datetime-local" name="timer" class="form-control text-center text-primary" value="{{ data.timer }}">
+        </div>
+    </div>
+    <!-- Div Footer -->
+    <div class="modal-footer">
+        <button type="submit" id="save-timer" class="btn btn-outline-primary btn-sm txt-sm">
+            <i class="fas fa-hdd"></i>&nbsp;&nbsp; Salvar
+        </button>
+    </div>
+</form>
+
+
+{% endblock form %}

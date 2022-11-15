@@ -1,0 +1,27 @@
+{% extends 'modals/baseModal.html' %}
+
+{% block modal-id %} id='newsModal' {% endblock %}
+
+{% block modal-title %}
+<span class="txt-sm3"><i class="fas fa-users"></i>&nbsp;&nbsp; Inscritos {{ total }} </span>
+{% endblock %}
+
+{% block modal-body %}
+<table class="table table-bordered table-sm">
+    <thead class="table-secondary">
+        <tr class="txt-sm2">
+            <th>Emails</th>
+            <th class="text-center">Data de cadastro</th>
+        </tr>
+    </thead>
+    {%  for data in news %}
+    <tr class="tr-size txt-sm">
+        <td>{{ data.email }}</td>
+        <td class="text-center">{{ data.create_at | date:'d/m/Y (H:i)' }}</td>
+        {% empty%}
+        <td colspan="2" class="text-danger text-center">Não há Inscritos</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock modal-body %}

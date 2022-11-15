@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<!-- Title -->
+{% block title %}Log in{% endblock title%}
+
+<!-- NAVBAR -->
+<!-- Left -->
+{% block nav-content %}
+    <i class="fas fa-key"></i>&nbsp;&nbsp; <span class="txt-sm2" style="yellowgreen;">Login</span>
+{% endblock nav-content %}
+
+<!-- Right -->
+{% block nav-btn %}
+    <a href="{% url 'frontend' %}" id="btn-nav" class="btn btn-secondary" title="Voltar">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+{% endblock nav-btn %}
+
+<!-- Page Content -->
+{% block content %}
+<style>
+    body {
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url("/static/img/rio.jpg");
+        background-position: center 0px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-sized: cover;
+    }
+</style>
+
+<div class="container mt-5" id="card-login">
+    <div class="card p-3 login-border">
+        <span class="text-center mt-3 txt-pulse txt-sm2"><strong>ACESSO RESTRITO</strong></span>
+            <form method="POST" autocomplete="off" class="txt-sm" novalidate>
+                <br><br>
+                {% csrf_token %}
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
+                <input class="btn btn-success btn-sm mt-4 w-100" type="submit" value="Entrar" id="btn-enter">
+            </form>
+            <center class="mt-4 mb-4 globe txt-sm">
+                <i class="fas fa-globe-americas mt-4 mb-4"></i>
+            </center>
+    </div>
+</div> <!-- END conteiner -->
+
+<!-- Error message (Login - forms.py) -->
+{% if form.errors %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    swal("Negado !", "Dados Incorretos", "error");
+</script>
+{% endif %}
+
+<br><br><br>
+{% endblock content %}
+
+<!-- Footer (Include Partials) -->
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock footer%}

@@ -1,0 +1,35 @@
+{% extends 'modals/baseModal.html' %}
+
+{% block modal-id %} id='musicModal{{ data.pk}}' {% endblock %}
+
+{% block modal-title %}
+<span class="txt-sm3"><i class="fas fa-play"></i>&nbsp;&nbsp; Música de Fundo</span>
+{% endblock %}
+
+<!-- Form -->
+{% block form %}
+<form method="POST" action="/edit_music" class="was-validated" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal-body">
+        <!-- ID Hidden -->
+        <input type="hidden" name="id" value="{{ data.id }}" readonly>
+
+        <!-- INPUTs -->
+        <!-- Nome da Musica -->
+        <input type="text" class="form-control txt-sm" name="title_music" value="{{ data.title_music }}" placeholder="Nome da música" required>
+        <hr>
+        <div class="btn btn-dark btn-sm w-100 mb-3" style="cursor: default;">Música atual: <span style="color: greenyellow;">{{ data.music }}</span></div>
+        <input type="file" class="form-control txt-sm" name="music" accept=".mp3, audio/*">
+
+
+    </div>
+    <!-- Div Footer -->
+    <div class="modal-footer">
+        <button type="submit" id="save-music" class="btn btn-outline-success btn-sm w-btn txt-sm">
+            <i class="fas fa-hdd"></i>&nbsp;&nbsp; Salvar
+        </button>
+    </div>
+</form>
+
+
+{% endblock form %}
